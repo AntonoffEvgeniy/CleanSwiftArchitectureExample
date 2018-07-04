@@ -6,5 +6,6 @@ target 'CleanSwiftArchitectureExample' do
   use_frameworks!
 
   # Pods for CleanSwiftArchitectureExample
+  pod 'Alamofire', '~> 4.7'
 
 end
