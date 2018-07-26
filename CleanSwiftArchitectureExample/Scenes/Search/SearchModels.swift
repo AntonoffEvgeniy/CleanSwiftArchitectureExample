@@ -12,17 +12,22 @@
 
 import UIKit
 
-enum Search
-{
+enum Search {
     // MARK: Use cases
     
-    enum Something
-    {
+    enum Coctails {
         struct Request {
+            var searchPhrase: String?
         }
         struct Response {
+            var coctails: [String]?
+            var isError: Bool
+            var errorMessage: String?
         }
         struct ViewModel {
+            var coctails: [String]?
+            var isError: Bool
+            var errorMessage: String?
         }
     }
 }

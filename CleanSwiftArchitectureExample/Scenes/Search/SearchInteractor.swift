@@ -13,7 +13,7 @@
 import UIKit
 
 protocol SearchBusinessLogic {
-    func search(request: Search.Something.Request)
+    func search(request: Search.Coctails.Request)
 }
 
 protocol SearchDataStore {
@@ -23,15 +23,22 @@ protocol SearchDataStore {
 class SearchInteractor: SearchBusinessLogic, SearchDataStore {
     var presenter: SearchPresentationLogic?
     var worker: SearchWorker?
-    //var name: String = ""
     
-    // MARK: Do something
+    // MARK: Do search
     
-    func search(request: Search.Something.Request) {
+    func search(request: Search.Coctails.Request) {
+        if request.searchPhrase == nil {
+            let response = Search.Coctails.Response(coctails: nil, isError: true, errorMessage: "error")
+            presenter?.presentCoctails(response: response)
+        }
+            
         worker = SearchWorker()
-        worker?.doSomeWork()
-        
-        let response = Search.Something.Response()
-        presenter?.presentSomething(response: response)
+        worker?.fetchCoctails(with: request.searchPhrase!, success: { [weak self] (response) in
+            let response = Search.Coctails.Response(coctails: response.coctails, isError: false, errorMessage: nil)
+            self?.presenter?.presentCoctails(response: response)
+        }, failure: { [weak self] (response) in
+            let response = Search.Coctails.Response(coctails: nil, isError: true, errorMessage: response.errorMessage)
+            self?.presenter?.presentCoctails(response: response)
+        })
     }
 }

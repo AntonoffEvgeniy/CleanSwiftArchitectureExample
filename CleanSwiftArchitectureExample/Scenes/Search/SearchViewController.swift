@@ -13,10 +13,13 @@
 import UIKit
 
 protocol SearchDisplayLogic: class {
-    func displaySomething(viewModel: Search.Something.ViewModel)
+    func displayCoctails(viewModel: Search.Coctails.ViewModel)
+    func displayError(viewModel: Search.Coctails.ViewModel)
 }
 
 class SearchViewController: UIViewController, SearchDisplayLogic {
+    @IBOutlet weak var searchTextField: UITextField!
+    
     var interactor: SearchBusinessLogic?
     var router: (NSObjectProtocol & SearchRoutingLogic & SearchDataPassing)?
     
@@ -35,16 +38,7 @@ class SearchViewController: UIViewController, SearchDisplayLogic {
     // MARK: Setup
     
     private func setup() {
-        let viewController = self
-        let interactor = SearchInteractor()
-        let presenter = SearchPresenter()
-        let router = SearchRouter()
-        viewController.interactor = interactor
-        viewController.router = router
-        interactor.presenter = presenter
-        presenter.viewController = viewController
-        router.viewController = viewController
-        router.dataStore = interactor
+        SearchConfigurator.shared.configure(self)
     }
     
     // MARK: Routing
@@ -66,18 +60,21 @@ class SearchViewController: UIViewController, SearchDisplayLogic {
         // TODO: setup
     }
     
-    // MARK: Do something
+    // MARK: Display
     
-    //@IBOutlet weak var nameTextField: UITextField!
+    func displayCoctails(viewModel: Search.Coctails.ViewModel) {
+        print(viewModel.coctails ?? "success")
+    }
     
-    func displaySomething(viewModel: Search.Something.ViewModel) {
-        //nameTextField.text = viewModel.name
+    func displayError(viewModel: Search.Coctails.ViewModel) {
+        print(viewModel.errorMessage ?? "failure")
     }
     
     // MARK: - Actions
     
     @IBAction func searchDidPress(_ sender: UIButton) {
-        let request = Search.Something.Request()
+        let searchPhrase = searchTextField.text
+        let request = Search.Coctails.Request(searchPhrase: searchPhrase)
         interactor?.search(request: request)
     }
 }

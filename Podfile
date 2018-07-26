@@ -7,5 +7,6 @@ target 'CleanSwiftArchitectureExample' do
 
   # Pods for CleanSwiftArchitectureExample
   pod 'Alamofire', '~> 4.7'
+  pod 'TPKeyboardAvoiding', '~> 1.3'
 
 end

@@ -14,6 +14,8 @@
 		617D00202109AC0E00C827C0 /* SearchModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617D001A2109AC0E00C827C0 /* SearchModels.swift */; };
 		617D00212109AC0E00C827C0 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617D001B2109AC0E00C827C0 /* SearchViewController.swift */; };
 		617D00222109AC0E00C827C0 /* SearchInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617D001C2109AC0E00C827C0 /* SearchInteractor.swift */; };
+		617E78AC210A3C6A00F27202 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617E78AB210A3C6A00F27202 /* APIManager.swift */; };
+		617E78AE210A4BCC00F27202 /* SearchConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617E78AD210A4BCC00F27202 /* SearchConfigurator.swift */; };
 		61F5A0B020ED7B0D0044BB8D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F5A0AF20ED7B0D0044BB8D /* AppDelegate.swift */; };
 		61F5A0B220ED7B0D0044BB8D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F5A0B120ED7B0D0044BB8D /* ViewController.swift */; };
 		61F5A0B520ED7B0D0044BB8D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61F5A0B320ED7B0D0044BB8D /* Main.storyboard */; };
@@ -41,6 +43,8 @@
 		617D001A2109AC0E00C827C0 /* SearchModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModels.swift; sourceTree = "<group>"; };
 		617D001B2109AC0E00C827C0 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		617D001C2109AC0E00C827C0 /* SearchInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchInteractor.swift; sourceTree = "<group>"; };
+		617E78AB210A3C6A00F27202 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		617E78AD210A4BCC00F27202 /* SearchConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchConfigurator.swift; sourceTree = "<group>"; };
 		61F5A0AC20ED7B0D0044BB8D /* CleanSwiftArchitectureExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CleanSwiftArchitectureExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		61F5A0AF20ED7B0D0044BB8D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		61F5A0B120ED7B0D0044BB8D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -84,14 +88,23 @@
 		617D00242109AC2300C827C0 /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				617D00172109AC0E00C827C0 /* SearchPresenter.swift */,
-				617D00182109AC0E00C827C0 /* SearchWorker.swift */,
-				617D00192109AC0E00C827C0 /* SearchRouter.swift */,
-				617D001A2109AC0E00C827C0 /* SearchModels.swift */,
-				617D001B2109AC0E00C827C0 /* SearchViewController.swift */,
+				617E78AD210A4BCC00F27202 /* SearchConfigurator.swift */,
 				617D001C2109AC0E00C827C0 /* SearchInteractor.swift */,
+				617D001A2109AC0E00C827C0 /* SearchModels.swift */,
+				617D00172109AC0E00C827C0 /* SearchPresenter.swift */,
+				617D00192109AC0E00C827C0 /* SearchRouter.swift */,
+				617D001B2109AC0E00C827C0 /* SearchViewController.swift */,
+				617D00182109AC0E00C827C0 /* SearchWorker.swift */,
 			);
 			path = Search;
+			sourceTree = "<group>";
+		};
+		617E78AA210A3C3700F27202 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				617E78AB210A3C6A00F27202 /* APIManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		61F5A0A320ED7B0D0044BB8D = {
@@ -117,6 +130,7 @@
 		61F5A0AE20ED7B0D0044BB8D /* CleanSwiftArchitectureExample */ = {
 			isa = PBXGroup;
 			children = (
+				617E78AA210A3C3700F27202 /* Managers */,
 				617D00232109AC1700C827C0 /* Scenes */,
 				61F5A0AF20ED7B0D0044BB8D /* AppDelegate.swift */,
 				61F5A0B120ED7B0D0044BB8D /* ViewController.swift */,
@@ -281,10 +295,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-CleanSwiftArchitectureExample/Pods-CleanSwiftArchitectureExample-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/TPKeyboardAvoiding/TPKeyboardAvoiding.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TPKeyboardAvoiding.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -298,9 +314,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				617E78AE210A4BCC00F27202 /* SearchConfigurator.swift in Sources */,
 				61F5A0B220ED7B0D0044BB8D /* ViewController.swift in Sources */,
 				617D00212109AC0E00C827C0 /* SearchViewController.swift in Sources */,
 				617D00222109AC0E00C827C0 /* SearchInteractor.swift in Sources */,
+				617E78AC210A3C6A00F27202 /* APIManager.swift in Sources */,
 				617D001F2109AC0E00C827C0 /* SearchRouter.swift in Sources */,
 				617D001E2109AC0E00C827C0 /* SearchWorker.swift in Sources */,
 				61F5A0B020ED7B0D0044BB8D /* AppDelegate.swift in Sources */,

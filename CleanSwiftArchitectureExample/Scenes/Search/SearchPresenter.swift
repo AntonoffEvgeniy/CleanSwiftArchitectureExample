@@ -13,7 +13,7 @@
 import UIKit
 
 protocol SearchPresentationLogic {
-    func presentSomething(response: Search.Something.Response)
+    func presentCoctails(response: Search.Coctails.Response)
 }
 
 class SearchPresenter: SearchPresentationLogic {
@@ -21,8 +21,12 @@ class SearchPresenter: SearchPresentationLogic {
     
     // MARK: Do something
     
-    func presentSomething(response: Search.Something.Response) {
-        let viewModel = Search.Something.ViewModel()
-        viewController?.displaySomething(viewModel: viewModel)
+    func presentCoctails(response: Search.Coctails.Response) {
+        let viewModel = Search.Coctails.ViewModel(coctails: response.coctails, isError: response.isError, errorMessage: response.errorMessage)
+        if viewModel.isError {
+            viewController?.displayError(viewModel: viewModel)
+        } else {
+            viewController?.displayCoctails(viewModel: viewModel)
+        }
     }
 }

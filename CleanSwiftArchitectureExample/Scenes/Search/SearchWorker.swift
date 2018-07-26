@@ -12,8 +12,17 @@
 
 import UIKit
 
+typealias responseHandler = (_ response: Search.Coctails.Response) ->()
+
 class SearchWorker {
-    func doSomeWork() {
-        
+    func fetchCoctails(with searchPhrase: String, success: responseHandler, failure: responseHandler) {
+        let manager = APIManager()
+        manager.fetchCoctails(with: searchPhrase, success: { (response) in
+            let model = Search.Coctails.Response(coctails: response, isError: false, errorMessage: nil)
+            success(model);
+        }) { (error) in
+            let model = Search.Coctails.Response(coctails: nil, isError: true, errorMessage: error.message)
+            failure(model);
+        }
     }
 }
