@@ -12,17 +12,16 @@
 
 import UIKit
 
-typealias responseHandler = (_ response: Search.Coctails.Response) ->()
+typealias responseSuccess = (_ response: Cocktail) ->()
+typealias responseFailure = (_ response: Error) ->()
 
 class SearchWorker {
-    func fetchCoctails(with searchPhrase: String, success: responseHandler, failure: responseHandler) {
+    func getRandomCocktail(with success: @escaping responseSuccess, failure: @escaping responseFailure) {
         let manager = APIManager()
-        manager.fetchCoctails(with: searchPhrase, success: { (response) in
-            let model = Search.Coctails.Response(coctails: response, isError: false, errorMessage: nil)
-            success(model);
+        manager.getRandomCocktail(with: { (cocktail) in
+            success(cocktail);
         }) { (error) in
-            let model = Search.Coctails.Response(coctails: nil, isError: true, errorMessage: error.message)
-            failure(model);
+            failure(error);
         }
     }
 }

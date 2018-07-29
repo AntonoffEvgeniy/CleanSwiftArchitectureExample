@@ -13,12 +13,10 @@
 import UIKit
 
 protocol SearchBusinessLogic {
-    func search(request: Search.Coctails.Request)
+    func search(request: Search.RandomCocktail.Request)
 }
 
-protocol SearchDataStore {
-    //var name: String { get set }
-}
+protocol SearchDataStore {}
 
 class SearchInteractor: SearchBusinessLogic, SearchDataStore {
     var presenter: SearchPresentationLogic?
@@ -26,19 +24,14 @@ class SearchInteractor: SearchBusinessLogic, SearchDataStore {
     
     // MARK: Do search
     
-    func search(request: Search.Coctails.Request) {
-        if request.searchPhrase == nil {
-            let response = Search.Coctails.Response(coctails: nil, isError: true, errorMessage: "error")
-            presenter?.presentCoctails(response: response)
-        }
-            
+    func search(request: Search.RandomCocktail.Request) {
         worker = SearchWorker()
-        worker?.fetchCoctails(with: request.searchPhrase!, success: { [weak self] (response) in
-            let response = Search.Coctails.Response(coctails: response.coctails, isError: false, errorMessage: nil)
+        worker?.getRandomCocktail(with: { [weak self] (cocktail) in
+            let response = Search.RandomCocktail.Response(cocktail: cocktail, isError: false, errorMessage: nil)
             self?.presenter?.presentCoctails(response: response)
-        }, failure: { [weak self] (response) in
-            let response = Search.Coctails.Response(coctails: nil, isError: true, errorMessage: response.errorMessage)
-            self?.presenter?.presentCoctails(response: response)
+            }, failure: { [weak self] (error) in
+                let response = Search.RandomCocktail.Response(cocktail: nil, isError: true, errorMessage: error.localizedDescription)
+                self?.presenter?.presentCoctails(response: response)
         })
     }
 }

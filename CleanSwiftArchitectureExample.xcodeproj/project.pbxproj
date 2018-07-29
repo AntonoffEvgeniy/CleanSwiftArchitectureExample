@@ -16,8 +16,8 @@
 		617D00222109AC0E00C827C0 /* SearchInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617D001C2109AC0E00C827C0 /* SearchInteractor.swift */; };
 		617E78AC210A3C6A00F27202 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617E78AB210A3C6A00F27202 /* APIManager.swift */; };
 		617E78AE210A4BCC00F27202 /* SearchConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617E78AD210A4BCC00F27202 /* SearchConfigurator.swift */; };
+		61E8AD28210E1D0600B13C96 /* Cocktail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E8AD27210E1D0600B13C96 /* Cocktail.swift */; };
 		61F5A0B020ED7B0D0044BB8D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F5A0AF20ED7B0D0044BB8D /* AppDelegate.swift */; };
-		61F5A0B220ED7B0D0044BB8D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F5A0B120ED7B0D0044BB8D /* ViewController.swift */; };
 		61F5A0B520ED7B0D0044BB8D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61F5A0B320ED7B0D0044BB8D /* Main.storyboard */; };
 		61F5A0B720ED7B0D0044BB8D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61F5A0B620ED7B0D0044BB8D /* Assets.xcassets */; };
 		61F5A0BA20ED7B0D0044BB8D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61F5A0B820ED7B0D0044BB8D /* LaunchScreen.storyboard */; };
@@ -45,9 +45,9 @@
 		617D001C2109AC0E00C827C0 /* SearchInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchInteractor.swift; sourceTree = "<group>"; };
 		617E78AB210A3C6A00F27202 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		617E78AD210A4BCC00F27202 /* SearchConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchConfigurator.swift; sourceTree = "<group>"; };
+		61E8AD27210E1D0600B13C96 /* Cocktail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cocktail.swift; sourceTree = "<group>"; };
 		61F5A0AC20ED7B0D0044BB8D /* CleanSwiftArchitectureExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CleanSwiftArchitectureExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		61F5A0AF20ED7B0D0044BB8D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		61F5A0B120ED7B0D0044BB8D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		61F5A0B420ED7B0D0044BB8D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		61F5A0B620ED7B0D0044BB8D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		61F5A0B920ED7B0D0044BB8D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -107,6 +107,14 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
+		61E8AD26210E1D0600B13C96 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				61E8AD27210E1D0600B13C96 /* Cocktail.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		61F5A0A320ED7B0D0044BB8D = {
 			isa = PBXGroup;
 			children = (
@@ -131,9 +139,9 @@
 			isa = PBXGroup;
 			children = (
 				617E78AA210A3C3700F27202 /* Managers */,
+				61E8AD26210E1D0600B13C96 /* Models */,
 				617D00232109AC1700C827C0 /* Scenes */,
 				61F5A0AF20ED7B0D0044BB8D /* AppDelegate.swift */,
-				61F5A0B120ED7B0D0044BB8D /* ViewController.swift */,
 				61F5A0B320ED7B0D0044BB8D /* Main.storyboard */,
 				61F5A0B620ED7B0D0044BB8D /* Assets.xcassets */,
 				61F5A0B820ED7B0D0044BB8D /* LaunchScreen.storyboard */,
@@ -295,12 +303,14 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-CleanSwiftArchitectureExample/Pods-CleanSwiftArchitectureExample-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/TPKeyboardAvoiding/TPKeyboardAvoiding.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TPKeyboardAvoiding.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -314,8 +324,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				61E8AD28210E1D0600B13C96 /* Cocktail.swift in Sources */,
 				617E78AE210A4BCC00F27202 /* SearchConfigurator.swift in Sources */,
-				61F5A0B220ED7B0D0044BB8D /* ViewController.swift in Sources */,
 				617D00212109AC0E00C827C0 /* SearchViewController.swift in Sources */,
 				617D00222109AC0E00C827C0 /* SearchInteractor.swift in Sources */,
 				617E78AC210A3C6A00F27202 /* APIManager.swift in Sources */,

@@ -10,22 +10,24 @@
 //  see http://clean-swift.com
 //
 
-import UIKit
-
 enum Search {
     // MARK: Use cases
     
-    enum Coctails {
-        struct Request {
-            var searchPhrase: String?
-        }
+    enum RandomCocktail {
+        struct Request {}
         struct Response {
-            var coctails: [String]?
+            var cocktail: Cocktail?
             var isError: Bool
             var errorMessage: String?
         }
         struct ViewModel {
-            var coctails: [String]?
+            struct DisplayedCocktail {
+                var title: String
+                var thumb: String
+                var instructions: String
+            }
+            
+            var displayedCocktail: DisplayedCocktail?
             var isError: Bool
             var errorMessage: String?
         }

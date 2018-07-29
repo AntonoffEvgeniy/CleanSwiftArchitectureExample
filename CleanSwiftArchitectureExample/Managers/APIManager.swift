@@ -7,16 +7,28 @@
 //
 
 import UIKit
+import Alamofire
+import ObjectMapper
 
-typealias successResponse = (_ data: [String]) -> ()
-typealias failureResponse = (_ error: ApiError) -> ()
+typealias successResponse = (_ data: Cocktail) -> ()
+typealias failureResponse = (_ error: Error) -> ()
 
 class APIManager: NSObject {
-    func fetchCoctails(with searchPhrase: String, success: successResponse, failure: failureResponse) {
-        // TODO: Add request
+    func getRandomCocktail(with success: @escaping successResponse, failure: @escaping failureResponse) {
         
-        success(["Coctail1", "Coctail2"]);
-//        failure(ApiError());
+        Alamofire.request("https://www.thecocktaildb.com/api/json/v1/1/random.php").responseJSON { response in
+            debugPrint(response)
+            
+            if let json = response.result.value as? [String: Any],
+                let drinks = json["drinks"] as? [Any],
+                let drink = drinks.first,
+                let cocktail = Mapper<Cocktail>().map(JSONObject: drink) {
+                success(cocktail);
+            }
+            if let error = response.error {
+                failure(error);
+            }
+        }
     }
 }
 

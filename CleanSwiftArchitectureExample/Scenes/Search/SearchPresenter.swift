@@ -13,20 +13,22 @@
 import UIKit
 
 protocol SearchPresentationLogic {
-    func presentCoctails(response: Search.Coctails.Response)
+    func presentCoctails(response: Search.RandomCocktail.Response)
 }
 
 class SearchPresenter: SearchPresentationLogic {
     weak var viewController: SearchDisplayLogic?
     
-    // MARK: Do something
+    // MARK: Do present
     
-    func presentCoctails(response: Search.Coctails.Response) {
-        let viewModel = Search.Coctails.ViewModel(coctails: response.coctails, isError: response.isError, errorMessage: response.errorMessage)
+    func presentCoctails(response: Search.RandomCocktail.Response) {
+        let cocktail = response.cocktail!
+        let displayedCocktail = Search.RandomCocktail.ViewModel.DisplayedCocktail(title: cocktail.title, thumb: cocktail.thumb, instructions: cocktail.instructions)
+        let viewModel = Search.RandomCocktail.ViewModel(displayedCocktail: displayedCocktail, isError: response.isError, errorMessage: response.errorMessage)
         if viewModel.isError {
             viewController?.displayError(viewModel: viewModel)
         } else {
-            viewController?.displayCoctails(viewModel: viewModel)
+            viewController?.displayCocktail(viewModel: viewModel)
         }
     }
 }

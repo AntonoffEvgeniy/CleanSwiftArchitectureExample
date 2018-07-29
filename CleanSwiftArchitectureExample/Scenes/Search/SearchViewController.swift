@@ -11,14 +11,17 @@
 //
 
 import UIKit
+import SDWebImage
 
-protocol SearchDisplayLogic: class {
-    func displayCoctails(viewModel: Search.Coctails.ViewModel)
-    func displayError(viewModel: Search.Coctails.ViewModel)
+protocol SearchDisplayLogic: class {    
+    func displayCocktail(viewModel: Search.RandomCocktail.ViewModel)
+    func displayError(viewModel: Search.RandomCocktail.ViewModel)
 }
 
 class SearchViewController: UIViewController, SearchDisplayLogic {
-    @IBOutlet weak var searchTextField: UITextField!
+    @IBOutlet weak var cocktailTitleLabel: UILabel!
+    @IBOutlet weak var cocktailImageView: UIImageView!
+    @IBOutlet weak var cocktailInstructionsLabel: UILabel!
     
     var interactor: SearchBusinessLogic?
     var router: (NSObjectProtocol & SearchRoutingLogic & SearchDataPassing)?
@@ -57,24 +60,24 @@ class SearchViewController: UIViewController, SearchDisplayLogic {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // TODO: setup
+        loadData()
+    }
+    
+    private func loadData() {
+        let request = Search.RandomCocktail.Request()
+        interactor?.search(request: request)
     }
     
     // MARK: Display
     
-    func displayCoctails(viewModel: Search.Coctails.ViewModel) {
-        print(viewModel.coctails ?? "success")
+    func displayCocktail(viewModel: Search.RandomCocktail.ViewModel) {
+        cocktailTitleLabel.text = viewModel.displayedCocktail?.title
+        let url = URL(string: viewModel.displayedCocktail!.thumb)
+        cocktailImageView.sd_setImage(with: url)
+        cocktailInstructionsLabel.text = viewModel.displayedCocktail?.instructions
     }
     
-    func displayError(viewModel: Search.Coctails.ViewModel) {
+    func displayError(viewModel: Search.RandomCocktail.ViewModel) {
         print(viewModel.errorMessage ?? "failure")
-    }
-    
-    // MARK: - Actions
-    
-    @IBAction func searchDidPress(_ sender: UIButton) {
-        let searchPhrase = searchTextField.text
-        let request = Search.Coctails.Request(searchPhrase: searchPhrase)
-        interactor?.search(request: request)
     }
 }
