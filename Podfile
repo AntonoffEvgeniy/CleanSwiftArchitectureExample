@@ -7,5 +7,7 @@ target 'CleanSwiftArchitectureExample' do
 
   # Pods for CleanSwiftArchitectureExample
   pod 'Alamofire', '~> 4.7'
+  pod 'ObjectMapper', '~> 3.3'
+  pod 'SDWebImage', '~> 4.1'
 
 end
