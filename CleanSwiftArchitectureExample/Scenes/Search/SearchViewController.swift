@@ -22,6 +22,7 @@ class SearchViewController: UIViewController, SearchDisplayLogic {
     @IBOutlet weak var cocktailTitleLabel: UILabel!
     @IBOutlet weak var cocktailImageView: UIImageView!
     @IBOutlet weak var cocktailInstructionsLabel: UILabel!
+    @IBOutlet weak var errorLabel: UILabel!
     
     var interactor: SearchBusinessLogic?
     var router: (NSObjectProtocol & SearchRoutingLogic & SearchDataPassing)?
@@ -78,6 +79,6 @@ class SearchViewController: UIViewController, SearchDisplayLogic {
     }
     
     func displayError(viewModel: Search.RandomCocktail.ViewModel) {
-        print(viewModel.errorMessage ?? "failure")
+        errorLabel.text = viewModel.errorMessage
     }
 }

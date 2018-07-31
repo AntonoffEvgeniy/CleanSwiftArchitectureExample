@@ -16,6 +16,12 @@
 		617D00222109AC0E00C827C0 /* SearchInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617D001C2109AC0E00C827C0 /* SearchInteractor.swift */; };
 		617E78AC210A3C6A00F27202 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617E78AB210A3C6A00F27202 /* APIManager.swift */; };
 		617E78AE210A4BCC00F27202 /* SearchConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617E78AD210A4BCC00F27202 /* SearchConfigurator.swift */; };
+		61BB8C46211070DC00AC5964 /* DetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BB8C40211070DC00AC5964 /* DetailsPresenter.swift */; };
+		61BB8C47211070DC00AC5964 /* DetailsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BB8C41211070DC00AC5964 /* DetailsWorker.swift */; };
+		61BB8C48211070DC00AC5964 /* DetailsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BB8C42211070DC00AC5964 /* DetailsRouter.swift */; };
+		61BB8C49211070DC00AC5964 /* DetailsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BB8C43211070DC00AC5964 /* DetailsModels.swift */; };
+		61BB8C4A211070DC00AC5964 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BB8C44211070DC00AC5964 /* DetailsViewController.swift */; };
+		61BB8C4B211070DC00AC5964 /* DetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BB8C45211070DC00AC5964 /* DetailsInteractor.swift */; };
 		61E8AD28210E1D0600B13C96 /* Cocktail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E8AD27210E1D0600B13C96 /* Cocktail.swift */; };
 		61F5A0B020ED7B0D0044BB8D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F5A0AF20ED7B0D0044BB8D /* AppDelegate.swift */; };
 		61F5A0B520ED7B0D0044BB8D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61F5A0B320ED7B0D0044BB8D /* Main.storyboard */; };
@@ -45,6 +51,12 @@
 		617D001C2109AC0E00C827C0 /* SearchInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchInteractor.swift; sourceTree = "<group>"; };
 		617E78AB210A3C6A00F27202 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		617E78AD210A4BCC00F27202 /* SearchConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchConfigurator.swift; sourceTree = "<group>"; };
+		61BB8C40211070DC00AC5964 /* DetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsPresenter.swift; sourceTree = "<group>"; };
+		61BB8C41211070DC00AC5964 /* DetailsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsWorker.swift; sourceTree = "<group>"; };
+		61BB8C42211070DC00AC5964 /* DetailsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsRouter.swift; sourceTree = "<group>"; };
+		61BB8C43211070DC00AC5964 /* DetailsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsModels.swift; sourceTree = "<group>"; };
+		61BB8C44211070DC00AC5964 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		61BB8C45211070DC00AC5964 /* DetailsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsInteractor.swift; sourceTree = "<group>"; };
 		61E8AD27210E1D0600B13C96 /* Cocktail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cocktail.swift; sourceTree = "<group>"; };
 		61F5A0AC20ED7B0D0044BB8D /* CleanSwiftArchitectureExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CleanSwiftArchitectureExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		61F5A0AF20ED7B0D0044BB8D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -80,6 +92,7 @@
 		617D00232109AC1700C827C0 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				61BB8C3F211070C400AC5964 /* Details */,
 				617D00242109AC2300C827C0 /* Search */,
 			);
 			path = Scenes;
@@ -105,6 +118,19 @@
 				617E78AB210A3C6A00F27202 /* APIManager.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		61BB8C3F211070C400AC5964 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				61BB8C40211070DC00AC5964 /* DetailsPresenter.swift */,
+				61BB8C41211070DC00AC5964 /* DetailsWorker.swift */,
+				61BB8C42211070DC00AC5964 /* DetailsRouter.swift */,
+				61BB8C43211070DC00AC5964 /* DetailsModels.swift */,
+				61BB8C44211070DC00AC5964 /* DetailsViewController.swift */,
+				61BB8C45211070DC00AC5964 /* DetailsInteractor.swift */,
+			);
+			path = Details;
 			sourceTree = "<group>";
 		};
 		61E8AD26210E1D0600B13C96 /* Models */ = {
@@ -327,13 +353,19 @@
 				61E8AD28210E1D0600B13C96 /* Cocktail.swift in Sources */,
 				617E78AE210A4BCC00F27202 /* SearchConfigurator.swift in Sources */,
 				617D00212109AC0E00C827C0 /* SearchViewController.swift in Sources */,
+				61BB8C4B211070DC00AC5964 /* DetailsInteractor.swift in Sources */,
 				617D00222109AC0E00C827C0 /* SearchInteractor.swift in Sources */,
 				617E78AC210A3C6A00F27202 /* APIManager.swift in Sources */,
+				61BB8C48211070DC00AC5964 /* DetailsRouter.swift in Sources */,
+				61BB8C46211070DC00AC5964 /* DetailsPresenter.swift in Sources */,
 				617D001F2109AC0E00C827C0 /* SearchRouter.swift in Sources */,
 				617D001E2109AC0E00C827C0 /* SearchWorker.swift in Sources */,
 				61F5A0B020ED7B0D0044BB8D /* AppDelegate.swift in Sources */,
+				61BB8C49211070DC00AC5964 /* DetailsModels.swift in Sources */,
 				617D001D2109AC0E00C827C0 /* SearchPresenter.swift in Sources */,
+				61BB8C47211070DC00AC5964 /* DetailsWorker.swift in Sources */,
 				617D00202109AC0E00C827C0 /* SearchModels.swift in Sources */,
+				61BB8C4A211070DC00AC5964 /* DetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

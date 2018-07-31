@@ -11,6 +11,7 @@
 //
 
 enum Search {
+    
     // MARK: Use cases
     
     enum RandomCocktail {

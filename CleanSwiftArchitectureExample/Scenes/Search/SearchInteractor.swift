@@ -16,11 +16,15 @@ protocol SearchBusinessLogic {
     func search(request: Search.RandomCocktail.Request)
 }
 
-protocol SearchDataStore {}
+protocol SearchDataStore {
+    var title: String { get }
+}
 
 class SearchInteractor: SearchBusinessLogic, SearchDataStore {
     var presenter: SearchPresentationLogic?
     var worker: SearchWorker?
+    
+    var title: String = ""
     
     // MARK: Do search
     
@@ -28,6 +32,7 @@ class SearchInteractor: SearchBusinessLogic, SearchDataStore {
         worker = SearchWorker()
         worker?.getRandomCocktail(with: { [weak self] (cocktail) in
             let response = Search.RandomCocktail.Response(cocktail: cocktail, isError: false, errorMessage: nil)
+            self?.title = cocktail.title
             self?.presenter?.presentCoctails(response: response)
             }, failure: { [weak self] (error) in
                 let response = Search.RandomCocktail.Response(cocktail: nil, isError: true, errorMessage: error.localizedDescription)
